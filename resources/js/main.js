@@ -9,8 +9,6 @@ function randomInt(min, max) {
 function computerPlay() {
 
     let randomizedValue = randomInt(1, 3);
-
-    console.log(randomizedValue);
     let computerSelection = 'none';
 
     switch (randomizedValue) {
@@ -53,4 +51,4 @@ function round(playerInput, computerInput) {
     return roundWinner;
 }
 
-console.log(round('paper', computerPlay()));
+console.log(round(playerPlay(), computerPlay()));
