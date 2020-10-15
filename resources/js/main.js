@@ -28,6 +28,12 @@ function computerPlay() {
     return computerSelection;
 }
 
+function playerPlay() {
+    const playerSelection = prompt('Choose one of these: Paper, Rock, Scissors');
+
+    return playerSelection.trim().toLowerCase();
+}
+
 function round(playerInput, computerInput) {
 
     let roundWinner = 'none';
