@@ -11,27 +11,28 @@ function computerPlay() {
     let randomizedValue = randomInt(1, 3);
 
     console.log(randomizedValue);
-    let returnValue = 'none';
+    let computerSelection = 'none';
 
     switch (randomizedValue) {
         case 1:
-            returnValue = 'rock';
+            computerSelection = 'rock';
             break;
 
         case 2:
-            returnValue = 'paper';
+            computerSelection = 'paper';
             break;
 
         case 3:
-            returnValue = 'scissor';
+            computerSelection = 'scissor';
             break;
 
         default:
-            returnValue = 'I was here';
+            computerSelection = 'I was here';
             break;
     }
 
-    return returnValue;
+    return computerSelection;
 }
+
 
 console.log(computerPlay());
