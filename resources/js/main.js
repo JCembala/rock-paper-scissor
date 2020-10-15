@@ -25,10 +25,6 @@ function computerPlay() {
         case 3:
             computerSelection = 'scissor';
             break;
-
-        default:
-            computerSelection = 'I was here';
-            break;
     }
 
     return computerSelection;
