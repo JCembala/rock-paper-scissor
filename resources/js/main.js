@@ -36,25 +36,66 @@ function playerPlay() {
 
 function round(playerInput, computerInput) {
 
-    let roundWinner = 'none';
+    let roundMessage = 'none';
+    let winner = 'none';
 
     if (playerInput === computerInput) {
-        roundWinner = 'Draw';
+        roundMessage = 'Draw';
     } else if (playerInput === 'rock' && computerInput === 'paper') {
-        roundWinner = 'You lose, Paper beats Rock.'
+        roundMessage = 'You lose, Paper beats Rock.'
+        winner = 'computer';
     } else if (playerInput === 'rock' && computerInput === 'scissors') {
-        roundWinner = 'You win!'
+        roundMessage = 'You win!'
+        winner = 'player';
     } else if (playerInput === 'paper' && computerInput === 'rock') {
-        roundWinner = 'You win!'
+        roundMessage = 'You win!'
+        winner = 'player';
     } else if (playerInput === 'paper' && computerInput === 'scissors') {
-        roundWinner = 'You lose, Scissors beats Paper.'
+        roundMessage = 'You lose, Scissors beats Paper.'
+        winner = 'computer';
     } else if (playerInput === 'scissor' && computerInput === 'paper') {
-        roundWinner = 'You win!'
+        roundMessage = 'You win!'
+        winner = 'player';
     } else if (playerInput === 'scissor' && computerInput === 'rock') {
-        roundWinner = 'You lose, Rock beats Scissors.'
+        roundMessage = 'You lose, Rock beats Scissors.'
+        winner = 'computer';
     }
 
-    return roundWinner;
+    console.log(roundMessage);
+    return winner;
 }
 
-console.log(round(playerPlay(), computerPlay()));
+function game() {
+
+    let playerScore = 0;
+    let computerScore = 0;
+    let gameWinner = 'none';
+
+    for (let i = 0; i < 5; i++) {
+        let currentWinner = round(playerPlay(), computerPlay());
+
+        if(currentWinner === 'player') {
+            playerScore++;
+        } else if (currentWinner === 'computer') {
+            computerScore++;
+        }
+    }
+
+    if(playerScore > computerScore) {
+        gameWinner = 'Player';
+    } else if (computerScore > playerScore) {
+        gameWinner = 'Computer';
+    } else { 
+        gameWinner = 'Draw';
+    }
+
+    console.log(`Player: ${playerScore} | Computer: ${computerScore}`);
+    
+    if (gameWinner === 'Draw') {
+        console.log(`There is no match winner, draw!`)
+    } else {
+        console.log(`Match winner: ${gameWinner}`)
+    }
+}
+
+game();
