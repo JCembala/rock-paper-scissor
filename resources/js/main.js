@@ -23,7 +23,7 @@ function computerPlay() {
             break;
 
         case 3:
-            computerSelection = 'scissor';
+            computerSelection = 'scissors';
             break;
     }
 
@@ -38,16 +38,16 @@ function round(playerInput, computerInput) {
         roundWinner = 'Draw';
     } else if (playerInput === 'rock' && computerInput === 'paper') {
         roundWinner = 'You lose, Paper beats Rock.'
-    } else if (playerInput === 'rock' && computerInput === 'scissor') {
+    } else if (playerInput === 'rock' && computerInput === 'scissors') {
         roundWinner = 'You win!'
     } else if (playerInput === 'paper' && computerInput === 'rock') {
         roundWinner = 'You win!'
-    } else if (playerInput === 'paper' && computerInput === 'scissor') {
-        roundWinner = 'You lose, Scissor beats Paper.'
+    } else if (playerInput === 'paper' && computerInput === 'scissors') {
+        roundWinner = 'You lose, Scissors beats Paper.'
     } else if (playerInput === 'scissor' && computerInput === 'paper') {
         roundWinner = 'You win!'
     } else if (playerInput === 'scissor' && computerInput === 'rock') {
-        roundWinner = 'You lose, Rock beats Scissor.'
+        roundWinner = 'You lose, Rock beats Scissors.'
     }
 
     return roundWinner;
