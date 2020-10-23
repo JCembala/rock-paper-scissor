@@ -69,6 +69,22 @@ function game() {
     let computerScore = 0;
     let gameWinner = 'none';
 
+    const rockBtn = document.querySelector('.actions__rock--js');
+    const paperBtn = document.querySelector('.actions__paper--js');
+    const scissorsBtn = document.querySelector('actions__scissors--js');
+
+    rockBtn.addEventListener('click', () => {
+        round(playerPlay('rock'), computerPlay());
+    })
+
+    paperBtn.addEventListener('click', () => {
+        round(playerPlay('paper'), computerPlay());
+    })
+
+    scissorsBtn.addEventListener('click', () => {
+        round(playerPlay('scissors'), computerPlay());
+    })
+
     for (let i = 0; i < 5; i++) {
         let currentWinner = round(playerPlay(), computerPlay());
 
