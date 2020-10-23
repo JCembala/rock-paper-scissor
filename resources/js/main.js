@@ -28,9 +28,7 @@ function computerPlay() {
     return computerSelection;
 }
 
-function playerPlay() {
-    const playerSelection = prompt('Choose one of these: Paper, Rock, Scissors');
-
+function playerPlay(playerSelection) {
     return playerSelection.trim().toLowerCase();
 }
 
