@@ -72,6 +72,7 @@ function game() {
     const rockBtn = document.querySelector('.actions__rock--js');
     const paperBtn = document.querySelector('.actions__paper--js');
     const scissorsBtn = document.querySelector('actions__scissors--js');
+    const scoreText = document.querySelector('score__text--js');
 
     rockBtn.addEventListener('click', () => {
         round(playerPlay('rock'), computerPlay());
