@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function randomInt(min, max) {
 
     min = Math.ceil(min);
@@ -40,67 +43,75 @@ function round(playerInput, computerInput) {
     if (playerInput === computerInput) {
         roundMessage = 'Draw';
     } else if (playerInput === 'rock' && computerInput === 'paper') {
-        roundMessage = 'You lose, Paper beats Rock.'
         winner = 'computer';
     } else if (playerInput === 'rock' && computerInput === 'scissors') {
-        roundMessage = 'You win!'
         winner = 'player';
     } else if (playerInput === 'paper' && computerInput === 'rock') {
-        roundMessage = 'You win!'
         winner = 'player';
     } else if (playerInput === 'paper' && computerInput === 'scissors') {
-        roundMessage = 'You lose, Scissors beats Paper.'
         winner = 'computer';
-    } else if (playerInput === 'scissor' && computerInput === 'paper') {
-        roundMessage = 'You win!'
+    } else if (playerInput === 'scissors' && computerInput === 'paper') {
         winner = 'player';
-    } else if (playerInput === 'scissor' && computerInput === 'rock') {
-        roundMessage = 'You lose, Rock beats Scissors.'
+    } else if (playerInput === 'scissors' && computerInput === 'rock') {
         winner = 'computer';
     }
-
-    console.log(roundMessage);
     return winner;
 }
 
-function game() {
-
-    let playerScore = 0;
-    let computerScore = 0;
-    let gameWinner = 'none';
+function setup() {
 
     const rockBtn = document.querySelector('.actions__rock--js');
     const paperBtn = document.querySelector('.actions__paper--js');
-    const scissorsBtn = document.querySelector('actions__scissors--js');
-    const scoreText = document.querySelector('score__text--js');
-
-    rockBtn.addEventListener('click', () => {
-        round(playerPlay('rock'), computerPlay());
-    })
-
-    paperBtn.addEventListener('click', () => {
-        round(playerPlay('paper'), computerPlay());
-    })
-
-    scissorsBtn.addEventListener('click', () => {
-        round(playerPlay('scissors'), computerPlay());
-    })
-
-    if(playerScore > computerScore) {
-        gameWinner = 'Player';
-    } else if (computerScore > playerScore) {
-        gameWinner = 'Computer';
-    } else { 
-        gameWinner = 'Draw';
-    }
-
-    console.log(`Player: ${playerScore} | Computer: ${computerScore}`);
+    const scissorsBtn = document.querySelector('.actions__scissors--js');
     
-    if (gameWinner === 'Draw') {
-        console.log(`There is no match winner, draw!`)
-    } else {
-        console.log(`Match winner: ${gameWinner}`)
-    }
+    rockBtn.addEventListener('click', () => {
+        game(round(playerPlay('rock'), computerPlay()));
+    })
+    
+    paperBtn.addEventListener('click', () => {
+        game(round(playerPlay('paper'), computerPlay()));
+    })
+    
+    scissorsBtn.addEventListener('click', () => {
+        game(round(playerPlay('scissors'), computerPlay()));
+    })
+
 }
 
-game();
+function game(roundWinner) {
+
+    let gameWinner = 'none';
+    const scoreText = document.querySelector('.score__text--js');
+
+    if(roundWinner === 'player') {
+        playerScore++;
+    } else if (roundWinner === 'computer') {
+        computerScore++;
+    }
+
+    scoreText.innerText = `Player: ${playerScore} | Computer: ${computerScore}`;
+
+
+    if(playerScore >= 5 || computerScore >= 5)
+    {
+        if(playerScore > computerScore) {
+            gameWinner = 'Player';
+        } else if (computerScore > playerScore) {
+            gameWinner = 'Computer';
+        } else { 
+            gameWinner = 'Draw';
+        }
+
+        if (gameWinner === 'Draw') {
+            scoreText.innerText = `There is no match winner, draw!`;
+        } else {
+            scoreText.innerText = `Match winner: ${gameWinner}`;
+        }
+
+        playerScore = 0;
+        computerScore = 0;
+    } 
+    
+}
+
+setup();
