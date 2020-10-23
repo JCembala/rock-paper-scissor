@@ -85,16 +85,6 @@ function game() {
         round(playerPlay('scissors'), computerPlay());
     })
 
-    for (let i = 0; i < 5; i++) {
-        let currentWinner = round(playerPlay(), computerPlay());
-
-        if(currentWinner === 'player') {
-            playerScore++;
-        } else if (currentWinner === 'computer') {
-            computerScore++;
-        }
-    }
-
     if(playerScore > computerScore) {
         gameWinner = 'Player';
     } else if (computerScore > playerScore) {
